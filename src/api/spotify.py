@@ -18,13 +18,11 @@ sp_oauth = SpotifyOAuth(
     scope=SCOPE
 )
 
-
 # Rotte per l'autenticazione
 @spotify_bp.route('/login', methods=['GET'])
 def login():
     auth_url = sp_oauth.get_authorize_url()
     return redirect(auth_url)
-
 
 @spotify_bp.route('/callback', methods=['GET'])
 def callback():
@@ -32,42 +30,18 @@ def callback():
     token_info = sp_oauth.get_access_token(code)
     return jsonify({"access_token": token_info['access_token']})
 
-
-# Rotte per il recupero dei dati
-@spotify_bp.route('/playlists', methods=['GET'])
-def get_playlists():
-    token = request.headers.get('Authorization')
-    if not token:
-        return jsonify({"error": "Authorization token missing"}), 401
-
+# Recupera dati da Spotify
+@spotify_bp.route('/data', methods=['GET'])
+def get_spotify_data(token):
     sp = spotipy.Spotify(auth=token)
-    playlists = sp.current_user_playlists()
+    top_tracks = sp.current_user_top_tracks(limit=20)['items']
 
-    response = []
-    for playlist in playlists['items']:
-        response.append({
-            'name': playlist['name'],
-            'tracks_url': playlist['tracks']['href']
-        })
+    genres = []
+    artists = []
+    for track in top_tracks:
+        for artist in track['artists']:
+            artist_data = sp.artist(artist['id'])
+            genres.extend(artist_data.get('genres', []))
+            artists.append(artist['name'])
 
-    return jsonify(response)
-
-
-@spotify_bp.route('/top-tracks', methods=['GET'])
-def get_top_tracks():
-    token = request.headers.get('Authorization')
-    if not token:
-        return jsonify({"error": "Authorization token missing"}), 401
-
-    sp = spotipy.Spotify(auth=token)
-    top_tracks = sp.current_user_top_tracks()
-
-    response = []
-    for track in top_tracks['items']:
-        response.append({
-            'name': track['name'],
-            'artist': track['artists'][0]['name'],
-            'album': track['album']['name']
-        })
-
-    return jsonify(response)
+    return {'genres': list(set(genres)), 'artists': list(set(artists))}
