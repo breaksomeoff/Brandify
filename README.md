@@ -15,7 +15,6 @@ Brandify/
 ├── src/                # Codice sorgente
 │   ├── main.py         # Punto di ingresso
 │   ├── api/            # Moduli API
-├── tests/              # Test unitari
 ├── requirements.txt    # Librerie necessarie
 ├── .gitignore          # File di esclusione per Git
 └── README.md           # Documentazione del progetto
@@ -43,8 +42,6 @@ Brandify/
 - Spotipy: Integrazione con Spotify API.
 - Python: Linguaggio principale.
 - Pandas/Numpy: Manipolazione e analisi dati.
-
----
 
 ## Licenza
 Questo progetto è distribuito sotto la licenza MIT.
