@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, redirect
+from flask import Blueprint, request, redirect, session, url_for
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
@@ -18,17 +18,30 @@ sp_oauth = SpotifyOAuth(
     scope=SCOPE
 )
 
-# Rotte per l'autenticazione
+# Rotta per l'autenticazione
 @spotify_bp.route('/login', methods=['GET'])
 def login():
     auth_url = sp_oauth.get_authorize_url()
     return redirect(auth_url)
 
+# Rotta per il logout
+@spotify_bp.route('/logout', methods=['GET'])
+def logout():
+    import os
+    if os.path.exists('.cache'):
+        os.remove('.cache')  # Rimuove la cache per forzare un nuovo login
+    return redirect('/')
+
 @spotify_bp.route('/callback', methods=['GET'])
 def callback():
     code = request.args.get('code')
     token_info = sp_oauth.get_access_token(code)
-    return jsonify({"access_token": token_info['access_token']})
+
+    # Salva il token nella sessione
+    session['authorization_token'] = token_info['access_token']
+
+    # Reindirizza alla pagina di configurazione
+    return redirect(url_for('recommendations.configure_search'))
 
 # Recupera dati da Spotify
 @spotify_bp.route('/data', methods=['GET'])
@@ -45,3 +58,4 @@ def get_spotify_data(token):
             artists.append(artist['name'])
 
     return {'genres': list(set(genres)), 'artists': list(set(artists))}
+

@@ -1,12 +1,12 @@
-
 .venv/
-
 
 __pycache__/
 *.pyc
 
-
 .idea/
 
-
 *.log
+
+.cache
+
+.env

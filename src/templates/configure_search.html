@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Configure Search</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Configure Your Search</h1>
+    <form method="POST" action="/recommendations">
+        <label for="min_price">Min Price:</label>
+        <input type="number" name="min_price" id="min_price" required><br>
+
+        <label for="max_price">Max Price:</label>
+        <input type="number" name="max_price" id="max_price" required><br>
+
+        <label for="preferred_brand">Preferred Brand:</label>
+        <input type="text" name="preferred_brand" id="preferred_brand"><br>
+
+        <input type="hidden" name="authorization_token" value="{{ authorization_token }}">
+        <button type="submit" class="button">Start Search</button>
+    </form>
+</body>
+</html>
+
+
