@@ -12,9 +12,9 @@
             <li>
                 <h2>{{ result.name }}</h2>
                 <p>{{ result.description }}</p>
-                <p>Price: {{ result.price }} {{ result.currency }}</p>
-                <p>Brand: {{ result.brand }}</p>
-                <img src="{{ result.image }}" alt="{{ result.name }}" width="200">
+                <p>Price: {{ result.price }} €</p>
+                <img src="{{ result.image_url }}" alt="{{ result.name }}" width="200">
+                <p>Link: <a href="{{ result.product_url }}">{{ result.product_url }}</a></p>
             </li>
         {% endfor %}
     </ul>

@@ -16,14 +16,41 @@ def configure_search():
 @recommendations_bp.route('/', methods=['POST'])
 def recommendations_results():
     # Recupera parametri dal form
-    min_price = float(request.form.get('min_price', 0))
-    max_price = float(request.form.get('max_price', 1000))
-    preferred_brand = request.form.get('preferred_brand', None)
+    min_price = request.form.get('min_price')
+    max_price = request.form.get('max_price')
+    top_n = request.form.get('top_n')
+
+    # Converti i parametri
+    min_price = float(min_price) if min_price and float(min_price) >= 0 else None
+    max_price = float(max_price) if max_price and float(max_price) >= 0 else None
+    top_n = int(top_n) if top_n and int(top_n) > 0 else None
+
     token = request.form.get('authorization_token')
 
+    # Recupera i dati da Spotify
     spotify_data = get_spotify_data(token)
-    keywords = " ".join(spotify_data['genres'] + spotify_data['artists'])
+    user_artists = spotify_data['artists']
+    user_genres = spotify_data['genres']
+    recent_artists = spotify_data['recent_artists']
+    recent_genres = spotify_data['recent_genres']
 
-    results = engine.recommend(keywords, min_price, max_price, preferred_brand)
+    # Stampa i dati recuperati
+    print(f"User Artists: {user_artists}")
+    print(f"User Genres: {user_genres}")
+    print(f"Recent Artists: {recent_artists}")
+    print(f"Recent Genres: {recent_genres}")
+
+    # Passa i dati al motore di raccomandazione
+    results = engine.recommend(
+        user_artists=user_artists,
+        user_genres=user_genres,
+        spotify_data={
+            'recent_artists': recent_artists,
+            'recent_genres': recent_genres,
+        },
+        min_price=min_price,
+        max_price=max_price,
+        top_n=top_n
+    )
+    print(results.to_dict(orient='records'))
     return render_template('results.html', results=results.to_dict(orient='records'))
-
