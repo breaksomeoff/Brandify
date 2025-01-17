@@ -24,7 +24,7 @@ def recommendations_results():
     token = request.form.get('authorization_token')
 
     if config.USE_MOCK_DATA:
-        spotify_data = config.PROFILE_1  # Cambia il profilo secondo la necessità
+        spotify_data = config.PROFILE_3  # Cambia il profilo secondo la necessità
     else:
         spotify_data = get_spotify_data(token)
 
@@ -36,10 +36,10 @@ def recommendations_results():
 
     # Dati utente per la visualizzazione in front-end
     user_data = {
-        "top_artists": spotify_data.get('user_top_artists', []),
-        "top_genres": spotify_data.get('user_top_genres', []),
-        "recent_artists": spotify_data.get('user_recent_artists', []),
-        "recent_genres": spotify_data.get('user_recent_genres', [])
+        "top_artists": spotify_data.get('artists', []),
+        "top_genres": spotify_data.get('genres', []),
+        "recent_artists": spotify_data.get('recent_artists', []),
+        "recent_genres": spotify_data.get('recent_genres', [])
     }
     print("[DEBUG] User Data:")
     pprint.pprint(user_data)
