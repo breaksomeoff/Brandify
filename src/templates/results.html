@@ -7,10 +7,43 @@
 </head>
 <body>
     <h1>Search Results</h1>
+
+    <h2>User Preferences</h2>
+    <div>
+        <h3>Top Artists:</h3>
+        <ul>
+            {% for artist in user_data.top_artists %}
+                <li>{{ artist }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Top Genres:</h3>
+        <ul>
+            {% for genre in user_data.top_genres %}
+                <li>{{ genre }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Recent Artists:</h3>
+        <ul>
+            {% for artist in user_data.recent_artists %}
+                <li>{{ artist }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Recent Genres:</h3>
+        <ul>
+            {% for genre in user_data.recent_genres %}
+                <li>{{ genre }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2>Recommended Products</h2>
     <ul>
         {% for result in results %}
             <li>
-                <h2>{{ result.name }}</h2>
+                <h3>{{ result.name }}</h3>
                 <p>{{ result.description }}</p>
                 <p>Price: {{ result.price }} €</p>
                 <img src="{{ result.image_url }}" alt="{{ result.name }}" width="200">

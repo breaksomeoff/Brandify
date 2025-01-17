@@ -1,15 +1,17 @@
 import pandas as pd
 import os
+import re
 import config
 
 ########################################
 # STOPWORDS & NOISE
 ########################################
 # Rimuove termini irrilevanti per il matching
+# (Non rimuoviamo alcune troppo generiche essendo che potrebbero essere incluse in nomi di artisti)
 STOPWORDS = {
     "fans", "fan",
     "hits", "hit",
-    "feat", "a", "an", "for",
+    "feat", "an", "for",
     "featuring", "inspired", "celebrating", "collection",
     "classic", "curated", "top", "exclusive", "iconic", "timeless",
     "vibrant", "unique", "rugged", "stylish", "comfortable", "premium",
@@ -72,6 +74,15 @@ def dictionary_lookup(text, dictionary_items):
 
     return matched
 
+########################################
+# PULIZIA TAG
+########################################
+def clean_special_characters(tags):
+    """
+    Rimuove caratteri speciali da ciascun tag nella lista.
+    """
+    cleaned_tags = [re.sub(r'[^a-zA-Z0-9_]', '', tag) for tag in tags]
+    return cleaned_tags
 
 ########################################
 # PREPROCESS CORE
@@ -88,6 +99,7 @@ def preprocess_products(csv_path):
          dando priorità ai sub-generi (black_metal) su generi più brevi (metal)
        - Rimuove eventuali tag “sottoinsieme” (es. se "black_metal" è trovato,
          rimuove "black" e "metal" dalla tag, serve a distinguere correttamente i sub-generi dai generi durante la raccomandazione).
+       - Rimuove caratteri speciali dai tag.
     4) Salva i risultati in df["tags"] e restituisce il DataFrame.
     """
     print("[INFO] Inizio preprocessing dei prodotti.")
@@ -115,8 +127,12 @@ def preprocess_products(csv_path):
         # Dizionario: cerca generi
         found_genres = dictionary_lookup(cleaned_text, genres_set)
 
+        # Rimuove caratteri speciali dai risultati del dizionario
+        found_artists = list(clean_special_characters(found_artists))
+        found_genres = list(clean_special_characters(found_genres))
+
         # Unione
-        tags = list(found_artists.union(found_genres))
+        tags = list(set(found_artists).union(set(found_genres)))
 
         # Rimuovi tag sottoinsieme:
         # es. se "black_metal" e "metal" coesistono, tieni solo "black_metal"
