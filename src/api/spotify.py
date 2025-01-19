@@ -26,6 +26,15 @@ def clean_text(text):
     text = re.sub(r'[^a-zA-Z0-9 ]', '', text)
     return text.replace(" ", "_").lower()
 
+def get_spotify_token():
+    """
+    Recupera il token dal file di cache.
+    """
+    token_info = sp_oauth.get_cached_token()
+    if token_info and not sp_oauth.is_token_expired(token_info):
+        return token_info['access_token']
+    return None
+
 @spotify_bp.route('/login', methods=['GET'])
 def login():
     auth_url = sp_oauth.get_authorize_url() + "&show_dialog=true"
@@ -70,7 +79,7 @@ def get_spotify_data(token, top_n_genres=15, top_m_artists=15):
     recent_genres = pd.Series(recent_genres).value_counts().head(top_n_genres).index.tolist()
     recent_artists = pd.Series(recent_artists).value_counts().head(top_m_artists).index.tolist()
 
-    print("Dati Spotify puliti:")
+    print("[DEBUG] Spotify User Data:")
     print(f"User Top Artists: {top_artists}")
     print(f"User Top Genres: {top_genres}")
     print(f"User Recent Artists: {recent_artists}")

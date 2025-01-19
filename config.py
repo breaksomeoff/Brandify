@@ -1,4 +1,5 @@
 import os
+import secrets
 from dotenv import load_dotenv
 
 # Carica variabili d'ambiente da .env
@@ -23,11 +24,11 @@ LASTFM_GENRES_FILE = "../dataset/genres.csv"
 CREATE_DICTIONARY = False
 
 # Configurazioni per l'Algoritmo Genetico
-GA_NUM_GENERATIONS = 50  # Aumentato per consentire più iterazioni e una migliore esplorazione
-GA_NUM_PARENTS_MATING = 10  # Manteniamo il numero di genitori per la varietà
-GA_SOL_PER_POP = 35  # Incrementato per aumentare la diversità della popolazione
-GA_MUTATION_PERCENT_GENES = 10  # Maggiore esplorazione attraverso la mutazione
-GA_CROSSOVER_PROBABILITY = 0.7  # Aumentato per favorire la combinazione di soluzioni
+GA_NUM_GENERATIONS = 50  # Numero iterazioni dell'algoritmo
+GA_NUM_PARENTS_MATING = 10  # Numero di genitori selezionati per la riproduzione
+GA_SOL_PER_POP = 120  # Numero di soluzioni nella popolazione
+GA_MUTATION_PERCENT_GENES = 3  # Percentuale di geni mutati in una soluzione
+GA_CROSSOVER_PROBABILITY = 0.7  # Probabilità di crossover tra due genitori
 GA_MIN_PRODUCTS = 5  # Soglia minima di prodotti in una soluzione valida
 
 # Pesi per la funzione di fitness
@@ -43,8 +44,8 @@ AFFINITY_WEIGHTS = {
 PENALTY_WEIGHT_NON_MATCH = 5  # Penalità per ogni prodotto non corrispondente ai gusti dell'utente
 
 
-# Flask Config
-FLASK_SECRET_KEY = os.getenv("FLASK_SECRET_KEY", "default_secret_key")
+# Flask session secret key
+FLASK_SECRET_KEY = secrets.token_hex(32)
 
 # Dati mock Spotify per il testing
 
@@ -53,9 +54,9 @@ USE_MOCK_DATA = False
 
 # Profilo 1 - Metal/Rock
 PROFILE_1 = {
-    "artists": ['slipknot', 'tool', 'deftones', 'alice_in_chains', 'korn', 'mudvayne', 'radiohead', 'city_morgue', 'the_cure', 'led_zeppelin', 'the_beatles', 'title_fight'],
+    "artists": ['slipknot', 'tool', 'deftones', 'alice_in_chains', 'korn', 'mudvayne', 'radiohead', 'city_morgue', 'the_cure', 'led_zeppelin', 'the_beatles', 'title_fight', 'death'],
     "genres": ['metal', 'nu_metal', 'alternative_metal', 'rock', 'hard_rock', 'progressive_metal', 'industrial_metal', 'classic_rock', 'psychedelic_rock', 'rap_metal', 'indie_rock', 'grunge', 'alternative_rock', 'punk_rock'],
-    "recent_artists": ['tool', 'slipknot', 'mudvayne', 'korn', 'city_morgue', 'radiohead', 'alice_in_chains', 'deftones', 'led_zeppelin', 'the_beatles', 'the_cure', 'title_fight', 'black_sabbath', 'nine_inch_nails', 'system_of_a_down'],
+    "recent_artists": ['tool', 'slipknot', 'mudvayne', 'korn', 'death', 'city_morgue', 'radiohead', 'alice_in_chains', 'deftones', 'led_zeppelin', 'the_beatles', 'the_cure', 'title_fight', 'black_sabbath', 'nine_inch_nails', 'system_of_a_down'],
     "recent_genres": ['metal', 'nu_metal', 'alternative_metal', 'industrial_metal', 'rap_metal', 'rock', 'hard_rock', 'classic_rock', 'progressive_rock', 'grunge', 'industrial_rock', 'heavy_metal', 'thrash_metal', 'death_metal']
 }
 

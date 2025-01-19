@@ -1,7 +1,7 @@
 import pprint
 
 from flask import Blueprint, request, jsonify, render_template, session, current_app
-from src.api.spotify import get_spotify_data
+from src.api.spotify import get_spotify_data, get_spotify_token
 import config
 
 recommendations_bp = Blueprint('recommendations', __name__)
@@ -18,15 +18,14 @@ def recommendations_results():
     min_price = request.form.get('min_price')
     max_price = request.form.get('max_price')
     preference_mode = request.form.get('preference_mode')
+    spotify_token = get_spotify_token()
     min_price = float(min_price) if min_price and float(min_price) >= 0 else None
     max_price = float(max_price) if max_price and float(max_price) >= 0 else None
 
-    token = request.form.get('authorization_token')
-
     if config.USE_MOCK_DATA:
-        spotify_data = config.PROFILE_3  # Cambia il profilo secondo la necessità
+        spotify_data = config.PROFILE_1  # Cambia il profilo a seconda della necessità
     else:
-        spotify_data = get_spotify_data(token)
+        spotify_data = get_spotify_data(spotify_token)
 
     engine = current_app.config["RECOMMENDER_ENGINE_GA"]
     engine.min_price = min_price
@@ -34,18 +33,11 @@ def recommendations_results():
     engine.preference_mode = preference_mode
     engine.user_data = spotify_data
 
-    # Dati utente per la visualizzazione in front-end
-    user_data = {
-        "top_artists": spotify_data.get('artists', []),
-        "top_genres": spotify_data.get('genres', []),
-        "recent_artists": spotify_data.get('recent_artists', []),
-        "recent_genres": spotify_data.get('recent_genres', [])
-    }
-    print("[DEBUG] User Data:")
-    pprint.pprint(user_data)
+    print("[DEBUG] Spotify Mock Data:")
+    pprint.pprint(spotify_data)
 
     df_results = engine.recommend()
 
     if df_results.empty:
-        return render_template('results.html', results=[], user_data=user_data)
-    return render_template('results.html', results=df_results.to_dict(orient='records'), user_data=user_data)
+        return render_template('results.html', results=[])
+    return render_template('results.html', results=df_results.to_dict(orient='records'))
