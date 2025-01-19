@@ -1,56 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search Results</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
-</head>
-<body>
-    <h1>Search Results</h1>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Your personalized product recommendations based on your Spotify preferences">
+        <title>Brandify - Your Recommendations</title>
+        <link rel="stylesheet" href="/static/css/results.css">
+    </head>
+    <body>
+        <header>
+            <div class="header-content">
+                <h1>Your Personalized Recommendations</h1>
+                <div class="subtitle-wrapper">
+                    <p class="subtitle">
+                        Based on your <strong>Spotify preferences</strong>, we've curated a selection of products
+                        that match your unique musical taste. Discover items that <strong>resonate</strong> with your style.
+                    </p>
+                </div>
+            </div>
+        </header>
 
-    <h2>User Preferences</h2>
-    <div>
-        <h3>Top Artists:</h3>
-        <ul>
-            {% for artist in user_data.top_artists %}
-                <li>{{ artist }}</li>
+        <section class="products-grid">
+            {% for result in results %}
+            <article class="product-card">
+                <div class="product-image">
+                    <img
+                        src="{{ result.image_url }}"
+                        alt="{{ result.name }}"
+                        loading="lazy"
+                    >
+                </div>
+                <div class="product-info">
+                    <h3>{{ result.name }}</h3>
+                    <p class="product-description">{{ result.description }}</p>
+                    <p class="product-price">{{ result.price }}€</p>
+                    <a
+                        href="{{ result.product_url }}"
+                        class="styled-button product-button"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View Product
+                    </a>
+                </div>
+            </article>
             {% endfor %}
-        </ul>
+        </section>
 
-        <h3>Top Genres:</h3>
-        <ul>
-            {% for genre in user_data.top_genres %}
-                <li>{{ genre }}</li>
-            {% endfor %}
-        </ul>
-
-        <h3>Recent Artists:</h3>
-        <ul>
-            {% for artist in user_data.recent_artists %}
-                <li>{{ artist }}</li>
-            {% endfor %}
-        </ul>
-
-        <h3>Recent Genres:</h3>
-        <ul>
-            {% for genre in user_data.recent_genres %}
-                <li>{{ genre }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <h2>Recommended Products</h2>
-    <ul>
-        {% for result in results %}
-            <li>
-                <h3>{{ result.name }}</h3>
-                <p>{{ result.description }}</p>
-                <p>Price: {{ result.price }} €</p>
-                <img src="{{ result.image_url }}" alt="{{ result.name }}" width="200">
-                <p>Link: <a href="{{ result.product_url }}">{{ result.product_url }}</a></p>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="/spotify/logout" class="button">Log Out and Return to Home</a>
-</body>
+        <footer>
+            <a href="/spotify/logout" class="styled-button action-button logout-button">
+                Log Out and Return to Home
+            </a>
+        </footer>
+    </body>
 </html>
