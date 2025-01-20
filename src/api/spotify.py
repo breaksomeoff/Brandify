@@ -3,6 +3,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import pandas as pd
 import re
+import os
 import config
 
 spotify_bp = Blueprint('spotify', __name__)
@@ -37,12 +38,13 @@ def get_spotify_token():
 
 @spotify_bp.route('/login', methods=['GET'])
 def login():
+    if os.path.exists('.cache'):
+        os.remove('.cache')
     auth_url = sp_oauth.get_authorize_url() + "&show_dialog=true"
     return redirect(auth_url)
 
 @spotify_bp.route('/logout', methods=['GET'])
 def logout():
-    import os
     if os.path.exists('.cache'):
         os.remove('.cache')
     session.clear()

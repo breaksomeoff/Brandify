@@ -1,5 +1,3 @@
-import pprint
-
 from flask import Blueprint, request, jsonify, render_template, session, current_app
 from src.api.spotify import get_spotify_data, get_spotify_token
 import config
@@ -23,7 +21,12 @@ def recommendations_results():
     max_price = float(max_price) if max_price and float(max_price) >= 0 else None
 
     if config.USE_MOCK_DATA:
-        spotify_data = config.PROFILE_1  # Cambia il profilo a seconda della necessità
+        spotify_data = config.PROFILE_1  # Cambiare il profilo a seconda della necessità (vedi config.py)
+        print("[DEBUG] Spotify Mock Data:")
+        print(f"Mock Top Artists: {spotify_data['artists']}")
+        print(f"Mock Top Genres: {spotify_data['genres']}")
+        print(f"Mock Recent Artists: {spotify_data['recent_artists']}")
+        print(f"Mock Recent Genres: {spotify_data['recent_genres']}")
     else:
         spotify_data = get_spotify_data(spotify_token)
 
@@ -32,9 +35,6 @@ def recommendations_results():
     engine.max_price = max_price
     engine.preference_mode = preference_mode
     engine.user_data = spotify_data
-
-    print("[DEBUG] Spotify Mock Data:")
-    pprint.pprint(spotify_data)
 
     df_results = engine.recommend()
 

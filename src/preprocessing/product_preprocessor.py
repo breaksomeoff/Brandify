@@ -16,7 +16,7 @@ STOPWORDS = {
     "classic", "curated", "top", "exclusive", "iconic", "timeless",
     "vibrant", "unique", "rugged", "stylish", "comfortable", "premium",
     "best", "perfect", "scene", "high-energy", "designed", "music",
-    "art", "culture", "artwork", "album", "bands", "style", "movement",
+    "culture", "artwork", "album", "bands", "style", "movement",
     "t-shirt", "hoodie", "mug", "cap", "poster", "vinyl", "beanie", "keychain",
     "bag", "tote bag", "rumours"
 }
