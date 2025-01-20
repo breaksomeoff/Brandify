@@ -19,7 +19,7 @@ def calculate_match_score(recommended_products, user_data):
     for _, row in recommended_products.iterrows():
         product_tags = set(row["tags"])
 
-        # Verifica specifica di match per debug approfondito
+        # Calcola i match tra i tag del prodotto e le preferenze dell'utente
         match_genres = product_tags & all_genres
         match_artists = product_tags & all_artists
 

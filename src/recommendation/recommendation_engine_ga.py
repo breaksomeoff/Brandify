@@ -39,37 +39,27 @@ class RecommendationEngineGA:
         self.mutation_percent_genes = config.GA_MUTATION_PERCENT_GENES
         self.crossover_probability = config.GA_CROSSOVER_PROBABILITY
         self.ga_min_products = config.GA_MIN_PRODUCTS
+        self.stagnation_limit = config.GA_STAGNATION_LIMIT
+        self.no_improvement_generations = 0  # Contatore per le generazioni senza miglioramenti
+        self.last_best_fitness = None  # Memorizza il miglior fitness della generazione precedente
 
         # Pesi di affinità & penalità
         self.affinity_weights = config.AFFINITY_WEIGHTS
         self.penalty_weight_non_match = config.PENALTY_WEIGHT_NON_MATCH
-
-        # Adatta i pesi in base alla modalità di preferenza
-        if preference_mode == "artist":
-            # Raddoppia i pesi orientati agli artisti
-            self.affinity_weights["shared_artists"] *= 2
-            self.affinity_weights["only_top_artists"] *= 2
-            self.affinity_weights["only_recent_artists"] *= 2
-            # e dimezza quelli dei generi
-            self.affinity_weights["shared_genres"] = max(1, self.affinity_weights["shared_genres"] // 2)
-            self.affinity_weights["only_top_genres"] = max(1, self.affinity_weights["only_top_genres"] // 2)
-            self.affinity_weights["only_recent_genres"] = max(1, self.affinity_weights["only_recent_genres"] // 2)
-
-        elif preference_mode == "genre":
-            # Raddoppia i pesi orientati ai generi
-            self.affinity_weights["shared_genres"] *= 2
-            self.affinity_weights["only_top_genres"] *= 2
-            self.affinity_weights["only_recent_genres"] *= 2
-            # e dimezza quelli degli artisti
-            self.affinity_weights["shared_artists"] = max(1, self.affinity_weights["shared_artists"] // 2)
-            self.affinity_weights["only_top_artists"] = max(1, self.affinity_weights["only_top_artists"] // 2)
-            self.affinity_weights["only_recent_artists"] = max(1, self.affinity_weights["only_recent_artists"] // 2)
 
         # Filtra i prodotti in base al prezzo
         self._filter_by_price()
 
         # Estrai i tag per ciascun prodotto
         self.products_tags = self.df_products["tags"].tolist()
+
+    def _reset_stagnation_params(self):
+        """
+        Reimposta i parametri di stagnazione per un nuovo ciclo GA.
+        """
+        self.no_improvement_generations = 0
+        self.last_best_fitness = None
+
 
     def _filter_by_price(self):
         """
@@ -92,13 +82,7 @@ class RecommendationEngineGA:
         top_artists = set(self.user_data.get("artists", []))
         recent_genres = set(self.user_data.get("recent_genres", []))
         recent_artists = set(self.user_data.get("recent_artists", []))
-        """
-        print("\n[DEBUG] Processing Product Tags:", p_tags)
-        print("[DEBUG] User Data - Top Artists:", top_artists)
-        print("[DEBUG] User Data - Recent Artists:", recent_artists)
-        print("[DEBUG] User Data - Top Genres:", top_genres)
-        print("[DEBUG] User Data - Recent Genres:", recent_genres)
-        """
+
         # Match tra tag prodotto e preferenze utente
         shared_artists_tags = (p_tags & top_artists) & recent_artists
         shared_genres_tags = (p_tags & top_genres) & recent_genres
@@ -106,45 +90,36 @@ class RecommendationEngineGA:
         only_top_genres = (p_tags & top_genres) - recent_genres
         only_recent_artists = (p_tags & recent_artists) - top_artists
         only_recent_genres = (p_tags & recent_genres) - top_genres
-        """
-        # Debug sui calcoli degli insiemi
-        print("[DEBUG] Shared Artists Tags:", shared_artists_tags)
-        print("[DEBUG] Shared Genres Tags:", shared_genres_tags)
-        print("[DEBUG] Only Top Artists:", only_top_artists)
-        print("[DEBUG] Only Top Genres:", only_top_genres)
-        print("[DEBUG] Only Recent Artists:", only_recent_artists)
-        print("[DEBUG] Only Recent Genres:", only_recent_genres)
-        """
-        # Calcolo del punteggio di affinità
-        affinity_score = (
-                len(shared_genres_tags) * self.affinity_weights["shared_genres"] +
-                len(shared_artists_tags) * self.affinity_weights["shared_artists"] +
-                len(only_top_genres) * self.affinity_weights["only_top_genres"] +
-                len(only_top_artists) * self.affinity_weights["only_top_artists"] +
-                len(only_recent_genres) * self.affinity_weights["only_recent_genres"] +
-                len(only_recent_artists) * self.affinity_weights["only_recent_artists"]
-        )
-        """
-        # Debug del punteggio di affinità
-        print("[DEBUG] Affinity Score Calculation:")
-        print("  Shared Genres Score:", len(shared_genres_tags), "*", self.affinity_weights["shared_genres"])
-        print("  Shared Artists Score:", len(shared_artists_tags), "*", self.affinity_weights["shared_artists"])
-        print("  Only Top Genres Score:", len(only_top_genres), "*", self.affinity_weights["only_top_genres"])
-        print("  Only Top Artists Score:", len(only_top_artists), "*", self.affinity_weights["only_top_artists"])
-        print("  Only Recent Genres Score:", len(only_recent_genres), "*", self.affinity_weights["only_recent_genres"])
-        print("  Only Recent Artists Score:", len(only_recent_artists), "*",
-              self.affinity_weights["only_recent_artists"])
-        print("[DEBUG] Total Affinity Score:", affinity_score)
-        """
-        # Penalità = penalty_weight_non_match per ogni prodotto che non matcha nulla
+
+        affinity_score = 0
+
+        if self.preference_mode == "artist":
+            affinity_score = (
+                    len(shared_artists_tags) * self.affinity_weights["shared_artists"] +
+                    len(only_top_artists) * self.affinity_weights["only_top_artists"] +
+                    len(only_recent_artists) * self.affinity_weights["only_recent_artists"]
+            )
+
+        elif self.preference_mode == "genre":
+            affinity_score = (
+                    len(shared_genres_tags) * self.affinity_weights["shared_genres"] +
+                    len(only_top_genres) * self.affinity_weights["only_top_genres"] +
+                    len(only_recent_genres) * self.affinity_weights["only_recent_genres"]
+            )
+
+        elif self.preference_mode == "balanced":
+            affinity_score = (
+                    len(shared_genres_tags) * self.affinity_weights["shared_genres"] +
+                    len(shared_artists_tags) * self.affinity_weights["shared_artists"] +
+                    len(only_top_genres) * self.affinity_weights["only_top_genres"] +
+                    len(only_top_artists) * self.affinity_weights["only_top_artists"] +
+                    len(only_recent_genres) * self.affinity_weights["only_recent_genres"] +
+                    len(only_recent_artists) * self.affinity_weights["only_recent_artists"]
+            )
+
+        # Penalità = penalty_weight_non_match per ogni prodotto che non matcha con i gusti dell'utente
         penalty = 0 if affinity_score > 0 else self.penalty_weight_non_match
-        """
-        # Debug della penalità
-        if penalty > 0:
-            print("[DEBUG] Penalty Applied:", penalty)
-        else:
-            print("[DEBUG] No Penalty Applied.")
-        """
+
         return affinity_score, penalty
 
     def _fitness_func(self, ga_instance, solution, solution_idx):
@@ -211,10 +186,23 @@ class RecommendationEngineGA:
 
     def _on_generation(self, ga_instance):
         """
-        Stampa log informativi a fine generazione.
+        Callback per la stampa di log informativi a fine generazione e per controllare la stagnazione.
         """
         best_solution, best_fitness, _ = ga_instance.best_solution()
         print(f"[INFO] Generazione {ga_instance.generations_completed}: Miglior fitness = {best_fitness}")
+
+        # Controlla la stagnazione
+        if self.last_best_fitness is not None and best_fitness <= self.last_best_fitness:
+            self.no_improvement_generations += 1
+        else:
+            self.no_improvement_generations = 0
+            self.last_best_fitness = best_fitness
+
+        # Arresta l'esecuzione se la stagnazione raggiunge il limite
+        if self.no_improvement_generations >= self.stagnation_limit:
+            print(
+                f"[INFO] Arresto anticipato: Nessun miglioramento per {self.stagnation_limit} generazioni consecutive.")
+            return "stop"
 
     def recommend(self):
         """
@@ -223,6 +211,9 @@ class RecommendationEngineGA:
         if self.df_products.empty:
             print("[WARNING] Nessun prodotto dopo il filtraggio prezzi.")
             return pd.DataFrame()
+
+        # Reimposta i parametri di stagnazione, serve per eseguire più volte il GA
+        self._reset_stagnation_params()
 
         # Popolazione iniziale con il vincolo ga_min_products
         initial_population = self._generate_initial_population()
@@ -243,17 +234,25 @@ class RecommendationEngineGA:
         ga_instance.run()
         print("[INFO] GA terminato.")
 
-        best_solution, best_fitness, _ = ga_instance.best_solution()
-        print(f"[INFO] Miglior fitness: {best_fitness}")
+        # Individuo e recupero il miglior fitness manualmente dalla popolazione finale
+        # (tramite la funzione ga_instance.best_solution() di PyGAD per recuperare dalla popolazione finale ottenevo discrepanze)
+        all_fitness = ga_instance.last_generation_fitness
+        best_fitness_from_population = max(all_fitness)
+        best_individual_index = np.argmax(all_fitness)
+        best_solution = ga_instance.population[best_individual_index]
 
+        print(f"[INFO] Miglior fitness ottenuta: {best_fitness_from_population}")
+
+        # Indici dei prodotti selezionati
         selected_indices = np.where(best_solution == 1)[0]
-        recommended_df   = self.df_products.iloc[selected_indices].copy()
+        recommended_df = self.df_products.iloc[selected_indices].copy()
 
         # Converti la colonna 'tags' in tuple per evitare errori di hashing con drop_duplicates
         recommended_df["tags"] = recommended_df["tags"].apply(tuple)
+        # Rimuove i duplicati (Duplicato = intera riga del DataFrame identica)
         recommended_df.drop_duplicates(inplace=True)
 
-        # Debug: stampa i prodotti scelti
+        # Stampa i prodotti scelti
         if not recommended_df.empty:
             print("[INFO] Prodotti suggeriti:")
             for _, row in recommended_df.iterrows():
