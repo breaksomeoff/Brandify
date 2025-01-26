@@ -1,0 +1,146 @@
+name,price,description,image_url,product_url
+Rock Mug,17.55,Premium ceramic mug featuring Rock design.,/static/products/mug.jpg,https://example.com/mug/8238
+Electronic Hoodie,63.03,Perfect for Electronic lovers - a cozy hoodie.,/static/products/hoodie.jpg,https://example.com/hoodie/6062
+Pop Tote bag,27.42,Canvas tote bag featuring Pop artwork.,/static/products/tote_bag.jpg,https://example.com/tote_bag/6035
+Indie Patches,17.45,Customize your gear with these Indie patches.,/static/products/patches.jpg,https://example.com/patches/8741
+Metal Keychain,13.37,Keychain featuring Metal logo.,/static/products/keychain.jpg,https://example.com/keychain/4644
+Heavy Metal Vinyl,37.33,Curated Heavy Metal vinyl compilation. Premium pressing with custom artwork.,/static/products/vinyl.jpg,https://example.com/vinyl/8523
+Alternative Rock Vinyl,35.65,Curated Alternative Rock vinyl compilation. Premium pressing with custom artwork.,/static/products/vinyl.jpg,https://example.com/vinyl/9647
+Jazz Tote bag,28.89,Durable tote bag showcasing Jazz design.,/static/products/tote_bag.jpg,https://example.com/tote_bag/6855
+Classic Rock Hoodie,60.15,High-quality hoodie inspired by Classic Rock.,/static/products/hoodie.jpg,https://example.com/hoodie/9227
+Ambient Hoodie,58.58,Premium hoodie featuring Ambient design.,/static/products/hoodie.jpg,https://example.com/hoodie/8279
+Experimental T-shirt,30.45,Premium T-shirt featuring Experimental artwork.,/static/products/t_shirt.jpg,https://example.com/t-shirt/5544
+Folk Mug,21.54,Perfect gift for Folk fans - a custom mug.,/static/products/mug.jpg,https://example.com/mug/3490
+Indie Rock Cap,30.89,Exclusive Indie Rock cap for collectors.,/static/products/cap.jpg,https://example.com/cap/2501
+Punk T-shirt,31.30,Comfortable T-shirt showcasing Punk design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Hip Hop Keychain,14.49,Keep your keys secure with this Hip Hop keychain.,/static/products/keychain.jpg,https://example.com/keychain/8018
+Hard Rock Patches,18.70,Perfect for personalizing your style with Hard Rock.,/static/products/patches.jpg,https://example.com/patches/3810
+Black Metal Cap,32.81,Exclusive Black Metal cap for collectors.,/static/products/cap.jpg,https://example.com/cap/2856
+Slipknot 'Iowa' Tote bag,27.85,Exclusive Slipknot's 'Iowa' tote bag for fans.,/static/products/tote_bag.jpg,https://example.com/tote_bag/8938
+Deftones 'White Pony' Beanie,21.80,Exclusive Deftones's 'White Pony' beanie for fans.,/static/products/beanie.jpg,https://example.com/beanie/3404
+The Beatles 'Abbey Road' T-shirt,32.58,Wear The Beatles's 'Abbey Road' with pride on this cotton T-shirt.,/static/products/t_shirt.jpg,https://example.com/t-shirt/4012
+Led Zeppelin 'IV' Beanie,21.19,Stylish beanie featuring Led Zeppelin's 'IV' logo.,/static/products/beanie.jpg,https://example.com/beanie/2126
+Bladee 'Cold Visions' Cap,28.50,Stay cool with Bladee's 'Cold Visions' cap.,/static/products/cap.jpg,https://example.com/cap/5117
+Korn 'See You On the Other Side' Tote bag,25.44,Official Korn's 'See You On the Other Side' tote bag.,/static/products/tote_bag.jpg,https://example.com/tote_bag/1961
+Mudvayne 'L.D. 50' Keychain,16.58,Exclusive Mudvayne's 'L.D. 50' keychain for fans.,/static/products/keychain.jpg,https://example.com/keychain/3644
+DMX 'Grand Champ' Beanie,28.78,Official 'Grand Champ' beanie by DMX.,/static/products/beanie.jpg,https://example.com/beanie/4735
+Gigi D'Agostino 'L'Amour Toujors' Keychain,15.32,Keep your keys secure with Gigi D'Agostino's 'L'Amour Toujors' keychain.,/static/products/keychain.jpg,https://example.com/keychain/5750
+Jay-Z 'The Blueprint 3' Cap,28.65,Adjustable cap with Jay-Z's 'The Blueprint 3' logo.,/static/products/cap.jpg,https://example.com/cap/3267
+"TOOL '10,000 Days' Hoodie",56.50,"High-quality hoodie inspired by TOOL's '10,000 Days'.",/static/products/hoodie.jpg,https://example.com/hoodie/6062
+City Morgue 'MY BLOODY AMERICA' T-shirt,28.24,Official 'MY BLOODY AMERICA' T-shirt by City Morgue. Sizes S-XXL.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Kanye West 'Donda' Tote bag,22.74,Canvas tote bag featuring Kanye West's 'Donda' artwork.,/static/products/tote_bag.jpg,https://example.com/tote_bag/8938
+Psychedelic Rock Beanie,26.03,Stylish beanie featuring Psychedelic Rock logo.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Rap Metal T-shirt,30.69,Exclusive Rap Metal T-shirt for genre fans.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Nu Metal Hoodie,60.19,Perfect for Nu Metal lovers - a cozy hoodie.,/static/products/hoodie.jpg,https://example.com/hoodie/9227
+Radiohead 'OK Computer' Keychain,16.76,Exclusive Radiohead's 'OK Computer' keychain for fans.,/static/products/keychain.jpg,https://example.com/keychain/8018
+The Weeknd 'After Hours' Patches,19.95,Exclusive The Weeknd's 'After Hours' patch set for fans.,/static/products/patches.jpg,https://example.com/patches/3810
+Underground Hip Hop Cap,32.90,Premium cap featuring Underground Hip Hop artwork.,/static/products/cap.jpg,https://example.com/cap/2856
+Dark Trap Tote bag,23.25,Canvas tote bag featuring Dark Trap artwork.,/static/products/tote_bag.jpg,https://example.com/tote_bag/8938
+Thrash Metal Beanie,21.36,Double-layered beanie showcasing Thrash Metal.,/static/products/beanie.jpg,https://example.com/beanie/3404
+80s T-shirt,32.64,Comfortable T-shirt showcasing 80s design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/4012
+Death 'The Sound of Perseverance' Beanie,28.57,Double-layered beanie showcasing Death's 'The Sound of Perseverance'.,/static/products/beanie.jpg,https://example.com/beanie/2126
+Techno Cap,31.42,Premium cap featuring Techno artwork.,/static/products/cap.jpg,https://example.com/cap/5117
+Trance Tote bag,21.44,Durable tote bag showcasing Trance design.,/static/products/tote_bag.jpg,https://example.com/tote_bag/1961
+90s Keychain,11.39,Exclusive 90s keychain for fans.,/static/products/keychain.jpg,https://example.com/keychain/3644
+House Beanie,21.96,Double-layered beanie showcasing House.,/static/products/beanie.jpg,https://example.com/beanie/4735
+Björk 'Fossora' Hoodie,58.53,Premium hoodie featuring Björk's 'Fossora' design.,/static/products/hoodie.jpg,https://example.com/hoodie/1626
+The Prodigy 'The Fat of the Land' T-shirt,34.91,Wear The Prodigy's 'The Fat of the Land' with pride on this cotton T-shirt.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Horrorcore Keychain,19.95,Premium keychain inspired by Horrorcore genre.,/static/products/keychain.jpg,https://example.com/keychain/8018
+Industrial Metal Patches,22.56,Exclusive patch set for Industrial Metal fans.,/static/products/patches.jpg,https://example.com/patches/3810
+Rap Tote bag,22.90,Carry your essentials with this Rap tote bag.,/static/products/tote_bag.jpg,https://example.com/tote_bag/8938
+Eminem 'The Eminem Show' T-shirt,30.74,Exclusive Eminem's 'The Eminem Show' T-shirt for fans.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+$uicideboy$ 'Stop Staring At the Shadows' Beanie,20.18,Keep warm with $uicideboy$'s 'Stop Staring At the Shadows' beanie.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Drake 'Her Loss' Vinyl,32.92,Drake's 'Her Loss' on premium vinyl. Perfect for collectors.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+Title Flight 'Shed' T-shirt,26.84,Comfortable T-shirt showcasing Title Flight's 'Shed' design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+The Cure 'Wish' Beanie,21.19,Keep warm with The Cure's 'Wish' beanie.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Pino Daniele 'Dimmi cosa succede sulla Terra' Vinyl,39.36,"Pino Daniele's iconic 'Dimmi cosa succede sulla Terra' album, now on vinyl!",/static/products/vinyl.jpg,https://example.com/vinyl/2126
+R&B Hoodie,61.15,Perfect for R&B lovers - a cozy hoodie.,/static/products/hoodie.jpg,https://example.com/hoodie/1626
+Geolier 'Il Coraggio dei Bambini' T-shirt,34.72,Exclusive Geolier's 'Il Coraggio dei Bambini' T-shirt for fans.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Travis Scott 'UTOPIA' Vinyl,32.16,Authentic vinyl release of Travis Scott's 'UTOPIA'. Includes exclusive artwork.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+Billie Eilish 'Happier Than Ever' Beanie,28.29,Official 'Happier Than Ever' beanie by Billie Eilish.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Lil Peep 'Come Over When Youre Sober' T-shirt,25.21,Exclusive Lil Peep's 'Come Over When Youre Sober' T-shirt for fans.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Playboi Carti 'Whole Lotta Red' Vinyl,39.94,Experience 'Whole Lotta Red' by Playboi Carti on high-quality vinyl.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+Alice in Chains 'Dirt' Hoodie,59.28,Premium hoodie featuring Alice in Chains's 'Dirt' design.,/static/products/hoodie.jpg,https://example.com/hoodie/1626
+Taylor Swift 'Midnights' T-shirt,29.65,Premium T-shirt featuring Taylor Swift's 'Midnights' artwork.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Future 'I Never Liked You' Beanie,22.53,Exclusive Future's 'I Never Liked You' beanie for fans.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Lil Uzi Vert 'Pink Tape' T-shirt,34.93,Wear Lil Uzi Vert's 'Pink Tape' with pride on this cotton T-shirt.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Kendrick Lamar 'Mr. Morale & the Big Steppers' Vinyl,33.62,Kendrick Lamar's 'Mr. Morale & the Big Steppers' on premium vinyl. Perfect for collectors.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+XXXTentacion '17' Hoodie,63.24,Premium hoodie featuring XXXTentacion's '17' design.,/static/products/hoodie.jpg,https://example.com/hoodie/1626
+Ariana Grande 'positions' T-shirt,32.53,Comfortable T-shirt showcasing Ariana Grande's 'positions' design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Lil Baby 'Its Only Me' Beanie,22.19,Stylish beanie featuring Lil Baby's 'Its Only Me' logo.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Bad Bunny 'Un Verano Sin Ti' Vinyl,37.96,Official vinyl pressing of Bad Bunny's 'Un Verano Sin Ti' tracks. Includes digital download card.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+Peso Pluma 'Genesis' T-shirt,29.07,Wear Peso Pluma's 'Genesis' with pride on this cotton T-shirt.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Trap Hoodie,60.81,Stay warm with this Trap hoodie.,/static/products/hoodie.jpg,https://example.com/hoodie/1626
+Art Pop Tote bag,25.31,Perfect for Art Pop lovers - a stylish tote.,/static/products/tote_bag.jpg,https://example.com/tote_bag/6035
+Dance Pop Hoodie,55.84,Exclusive Dance Pop pullover hoodie.,/static/products/hoodie.jpg,https://example.com/hoodie/6062
+Latin Pop Vinyl,34.48,Curated Latin Pop vinyl compilation. Premium pressing with custom artwork.,/static/products/vinyl.jpg,https://example.com/vinyl/8523
+Reggaeton Cap,24.86,Perfect accessory for Reggaeton fans.,/static/products/cap.jpg,https://example.com/cap/2501
+Emo Rap Beanie,23.22,Double-layered beanie showcasing Emo Rap.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Melodic Rap T-shirt,31.67,Comfortable T-shirt showcasing Melodic Rap design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Drill Patches,18.37,Customize your gear with these Drill patches.,/static/products/patches.jpg,https://example.com/patches/8741
+Cloud Rap Keychain,15.02,Premium keychain inspired by Cloud Rap.,/static/products/keychain.jpg,https://example.com/keychain/4644
+Alternative Rap Mug,19.22,Dishwasher-safe ceramic mug with custom Alternative Rap artwork.,/static/products/mug.jpg,https://example.com/mug/8238
+Conscious Rap Vinyl,37.61,Limited edition Conscious Rap vinyl. Perfect for any music lover.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+Mumble Rap Tote bag,24.32,Carry your essentials with this Mumble Rap tote bag.,/static/products/tote_bag.jpg,https://example.com/tote_bag/8938
+Alternative Metal Hoodie,58.92,Exclusive Alternative Metal pullover hoodie.,/static/products/hoodie.jpg,https://example.com/hoodie/9227
+Grunge T-shirt,34.55,Wear Grunge with pride on this cotton T-shirt.,/static/products/t_shirt.jpg,https://example.com/t-shirt/5544
+Industrial Rock Patches,22.41,Perfect for personalizing your style with Industrial Rock.,/static/products/patches.jpg,https://example.com/patches/3810
+System of a Down 'Toxicity' Beanie,28.13,Official 'Toxicity' beanie by System of a Down.,/static/products/beanie.jpg,https://example.com/beanie/4735
+Black Sabbath 'Paranoid' Vinyl,38.39,"Black Sabbath's iconic 'Paranoid' album, now on vinyl!",/static/products/vinyl.jpg,https://example.com/vinyl/2856
+Nine Inch Nails 'The Downward Spiral' T-shirt,26.46,Official 'The Downward Spiral' T-shirt by Nine Inch Nails. Sizes S-XXL.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Death 'The Sound of Perseverance' Vinyl,31.35,Authentic vinyl release of Death's 'The Sound of Perseverance'. Includes exclusive artwork.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+Lil Uzi Vert 'LUV Is Rage 2' Vinyl,33.92,Experience 'LUV Is Rage 2' by Lil Uzi Vert on high-quality vinyl.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+Korn 'Follow the Leader' T-shirt,29.65,Exclusive Korn's 'Follow the Leader' T-shirt for fans.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Mudvayne 'The End of All Things to Come' Beanie,21.84,Official Mudvayne's 'The End of All Things to Come' beanie for fans.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Kanye West 'Graduation' Vinyl,34.92,Official vinyl pressing of Kanye West's 'Graduation'. Includes digital download card.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+Travis Scott 'ASTROWORLD' T-shirt,32.53,Comfortable T-shirt showcasing Travis Scott's 'ASTROWORLD' design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+The Cure 'Disintegration' Beanie,21.19,Keep warm with The Cure's 'Disintegration' beanie.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Playboi Carti 'Die Lit' Vinyl,39.94,Experience 'Die Lit' by Playboi Carti on high-quality vinyl.,/static/products/vinyl.jpg,https://example.com/vinyl/2126
+Alice in Chains 'Facelift' Hoodie,59.28,Premium hoodie featuring Alice in Chains's 'Facelift' design.,/static/products/hoodie.jpg,https://example.com/hoodie/1626
+Taylor Swift 'Red' T-shirt,29.65,Premium T-shirt featuring Taylor Swift's 'Red' artwork.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1626
+Future 'High Off Life' Beanie,22.53,Exclusive Future's 'High Off Life' beanie for fans.,/static/products/beanie.jpg,https://example.com/beanie/3404
+Flo Rida Hoodie,55.50,Cozy hoodie featuring Flo Rida's design.,/static/products/hoodie.jpg,https://example.com/hoodie/1024
+Two Steps From Hell Vinyl,36.50,Experience Two Steps From Hell's epic compositions on vinyl.,/static/products/vinyl.jpg,https://example.com/vinyl/1027
+Mudvayne Beanie,21.00,Stay warm with Mudvayne's beanie.,/static/products/beanie.jpg,https://example.com/beanie/1028
+Roy Buchanan Hoodie,50.00,Cozy hoodie featuring Roy Buchanan's design.,/static/products/hoodie.jpg,https://example.com/hoodie/1029
+Marko Hietala T-shirt,25.50,Comfortable T-shirt showcasing Marko Hietala's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1030
+Bermuda Triangle Patches,19.50,Customize your gear with Bermuda Triangle's patches.,/static/products/patches.jpg,https://example.com/patches/1031
+Pungent Stench Keychain,15.00,Premium keychain inspired by Pungent Stench.,/static/products/keychain.jpg,https://example.com/keychain/1032
+Lewis Capaldi T-shirt,26.00,Wear Lewis Capaldi's latest hits on this cotton T-shirt.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1033
+Susumu Hirasawa Hoodie,54.00,Cozy hoodie featuring Susumu Hirasawa's artwork.,/static/products/hoodie.jpg,https://example.com/hoodie/1034
+J. Cole Vinyl,37.00,Exclusive J. Cole vinyl compilation.,/static/products/vinyl.jpg,https://example.com/vinyl/1035
+Danny McCarthy T-shirt,23.00,Comfortable T-shirt showcasing Danny McCarthy's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1036
+Alvaro Diaz Beanie,20.50,Stylish beanie featuring Alvaro Diaz's logo.,/static/products/beanie.jpg,https://example.com/beanie/1037
+Maurice Ravel Vinyl,40.00,Maurice Ravel's classic compositions on premium vinyl.,/static/products/vinyl.jpg,https://example.com/vinyl/1038
+Ornatos Violeta Mug,19.00,High-quality ceramic mug featuring Ornatos Violeta design.,/static/products/mug.jpg,https://example.com/mug/1039
+Mississippi John Hurt Hoodie,50.00,Cozy hoodie featuring Mississippi John Hurt's artwork.,/static/products/hoodie.jpg,https://example.com/hoodie/1040
+Hoshimachi Suisei T-shirt,24.50,Comfortable T-shirt showcasing Hoshimachi Suisei's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1041
+Silent Bob Keychain,14.75,Stylish keychain featuring Silent Bob's logo.,/static/products/keychain.jpg,https://example.com/keychain/1042
+Kaleo Vinyl,35.00,Exclusive Kaleo vinyl compilation.,/static/products/vinyl.jpg,https://example.com/vinyl/1043
+Unown Beanie,21.50,Stay warm with Unown's beanie.,/static/products/beanie.jpg,https://example.com/beanie/1044
+Suhu Hoodie,53.00,Cozy hoodie featuring Suhu's artwork.,/static/products/hoodie.jpg,https://example.com/hoodie/1045
+Crystal Castles T-shirt,24.00,Comfortable T-shirt showcasing Crystal Castles' design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1046
+Kat Tote bag,27.50,Canvas tote bag featuring Kat's artwork.,/static/products/tote_bag.jpg,https://example.com/tote_bag/1047
+Imogen Heap Hoodie,54.50,Cozy hoodie featuring Imogen Heap's design.,/static/products/hoodie.jpg,https://example.com/hoodie/1049
+Paul McCartney T-shirt,26.50,Comfortable T-shirt showcasing Paul McCartney's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1050
+Satanic Warmaster Beanie,21.75,Stay warm with Satanic Warmaster's beanie.,/static/products/beanie.jpg,https://example.com/beanie/1051
+Rollins Band Vinyl,37.50,Exclusive Rollins Band vinyl compilation.,/static/products/vinyl.jpg,https://example.com/vinyl/1052
+Slayer Hoodie,55.00,Premium hoodie featuring Slayer's artwork.,/static/products/hoodie.jpg,https://example.com/hoodie/1053
+A Boogie Wit Da Hoodie T-shirt,25.00,Comfortable T-shirt showcasing A Boogie Wit Da Hoodie's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1054
+Nokturnal Mortum Hoodie,55.50,Premium hoodie featuring Nokturnal Mortum's artwork.,/static/products/hoodie.jpg,https://example.com/hoodie/1084
+Natte Visstick T-shirt,23.50,Comfortable T-shirt showcasing Natte Visstick's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1085
+Lagosta Beanie,21.00,Stay warm with Lagosta's beanie.,/static/products/beanie.jpg,https://example.com/beanie/1086
+Jon Foreman Hoodie,54.00,Cozy hoodie featuring Jon Foreman's artwork.,/static/products/hoodie.jpg,https://example.com/hoodie/1087
+Pawsa Keychain,16.50,Stylish keychain featuring Pawsa's logo.,/static/products/keychain.jpg,https://example.com/keychain/1088
+Sonny Boy Williamson T-shirt,24.00,Comfortable T-shirt showcasing Sonny Boy Williamson's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1089
+Emperor Vinyl,38.00,Exclusive Emperor vinyl compilation.,/static/products/vinyl.jpg,https://example.com/vinyl/1090
+Super Guitar Bros Hoodie,55.50,Premium hoodie featuring Super Guitar Bros's artwork.,/static/products/hoodie.jpg,https://example.com/hoodie/1091
+Kina T-shirt,24.50,Comfortable T-shirt showcasing Kina's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1092
+Kaitlyn Aurelia Smith Beanie,21.50,Stay warm with Kaitlyn Aurelia Smith's beanie.,/static/products/beanie.jpg,https://example.com/beanie/1093
+Clock DVA Vinyl,37.50,Exclusive Clock DVA vinyl compilation.,/static/products/vinyl.jpg,https://example.com/vinyl/1094
+Dwarves Hoodie,54.00,Cozy hoodie featuring Dwarves's artwork.,/static/products/hoodie.jpg,https://example.com/hoodie/1095
+Enjoy T-shirt,23.50,Comfortable T-shirt showcasing Enjoy's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1096
+Eagles Vinyl,36.00,Exclusive Eagles vinyl compilation.,/static/products/vinyl.jpg,https://example.com/vinyl/1097
+Dissection Hoodie,55.00,Premium hoodie featuring Dissection's artwork.,/static/products/hoodie.jpg,https://example.com/hoodie/1098
+ZTS Beanie,21.00,Stay warm with ZTS's beanie.,/static/products/beanie.jpg,https://example.com/beanie/1099
+Amethystium T-shirt,24.00,Comfortable T-shirt showcasing Amethystium's design.,/static/products/t_shirt.jpg,https://example.com/t-shirt/1100
