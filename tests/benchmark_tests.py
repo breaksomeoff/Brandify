@@ -15,7 +15,7 @@ def run_benchmark_tests(df_products):
     }
 
     # Range di prezzo e modalità di ricerca
-    price_ranges = [(22.19, 37), (12.26, 51.51), (None, None)]
+    price_ranges = [(22, 37), (12, 51), (None, None)]
     search_modes = ["artist", "genre", "balanced"]
 
     results = []  # Risultati finali
