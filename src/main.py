@@ -4,17 +4,20 @@ from flask import Flask, render_template
 from src.api.spotify import spotify_bp
 from src.api.recommendations import recommendations_bp
 
-# GA
-from src.recommendation.recommendation_engine_ga import RecommendationEngineGA
-
 # Configurazioni
 import config
 
 # Preprocessing per i prodotti
 from src.preprocessing.product_preprocessor import preprocess_products
 
-# Last.fm extraction (per generare artists.csv/genres.csv)
+# GA
+from src.recommendation.recommendation_engine_ga import RecommendationEngineGA
+
+# Last.fm extraction (per generare artists.txt/genres.txt - dizionari)
 from src.preprocessing.lastfm_extraction import save_lastfm_data
+
+# Benchmark tests
+from tests.benchmark_tests import run_benchmark_tests
 
 def create_app():
     """
@@ -23,12 +26,13 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = config.FLASK_SECRET_KEY
 
-    # Preprocessing Dataset dei prodotti
-    print("[INFO] Caricamento e preprocessing dataset...")
+    # Preprocessing del data contenente i prodotti
+    # (Se app.run(debug=*True*, port=5000) viene eseguito, il preprocessing viene effettuato due volte)
+    print("[INFO] Caricamento e preprocessing data...")
     df_products = preprocess_products(config.DATASET_PATH)
     app.config["DF_PRODUCTS"] = df_products
 
-    # Inizializzazione RecommendationEngineGA
+    # Inizializza RecommendationEngineGA
     print("[INFO] Inizializzazione RecommendationEngineGA...")
     engine = RecommendationEngineGA(
         df_products=df_products,
@@ -55,9 +59,16 @@ def create_dictionary():
     save_lastfm_data(genre_limit=100, limit_per_genre=100)
     print("[INFO] Dizionari creati con successo.")
 
+def tests():
+    print("[INFO] Caricamento e preprocessing data per i tests...")
+    df_products = preprocess_products(config.DATASET_PATH)
+    run_benchmark_tests(df_products)
+
 if __name__ == "__main__":
     if config.CREATE_DICTIONARY:
         create_dictionary()
+    elif config.RUN_TESTS:
+        tests()
     else:
         app = create_app()
         app.run(debug=True, port=5000)
