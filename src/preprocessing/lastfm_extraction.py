@@ -114,7 +114,7 @@ def save_lastfm_data(genre_limit=100, limit_per_genre=100):
     print(f"[INFO] Scarico artisti basandomi sui generi...")
     all_artists = get_all_artists(genre_limit=genre_limit, limit_per_genre=limit_per_genre)
 
-    # Crea la cartella "dataset" se non esiste
+    # Crea la cartella "data" se non esiste
     dir_dataset = os.path.dirname(config.LASTFM_GENRES_FILE)
     if dir_dataset and not os.path.exists(dir_dataset):
         os.makedirs(dir_dataset)

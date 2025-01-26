@@ -27,7 +27,7 @@ STOPWORDS = {
 ########################################
 def load_dictionary(dict_path):
     """
-    Carica un file di testo (es. artists.csv, genres.csv) e restituisce
+    Carica un file di testo (artists.txt, genres.txt) e restituisce
     un set di stringhe in minuscolo (una per riga).
     Presuppone che i file siano già minuscolizzati in lastfm_extraction.py.
     """
@@ -46,14 +46,14 @@ def load_dictionary(dict_path):
 ########################################
 def dictionary_lookup(text, dictionary_items):
     """
-    Cerca i termini di 'dictionary_items' (in minuscolo) all'interno
-    di 'text' (anch'esso in minuscolo).
-    - Ritorna un set di match trovati, trasformando " " in "_"
-      (es. "black metal" -> "black_metal").
-    - Ordina per numero di parole e lunghezza (descending), così "black metal"
-      precede "metal".
-    - Una volta trovato un termine, "consuma" il testo sostituendolo con spazi,
-      per evitare di matchare anche il termine più corto.
+    Cerca i termini contenuti in 'dictionary_items' all'interno
+    di 'text' (entrambi in minuscolo). Restituisce un set di match,
+    sostituendo gli spazi con underscore, ad esempio: "black metal" -> "black_metal".
+
+    Ordina prima i termini più lunghi (in base a conteggio parole e lunghezza stringa),
+    per evitare che "metal" venga trovato prima di "black metal".
+    Una volta trovato un termine, lo "consuma" (rimpiazza con spazi),
+    così da non matchare più sottostringhe parziali in conflitto.
     """
     matched = set()
 
@@ -135,12 +135,15 @@ def preprocess_products(csv_path):
         tags = list(set(found_artists).union(set(found_genres)))
 
         # Rimuovi tag sottoinsieme:
-        # es. se "black_metal" e "metal" coesistono, tieni solo "black_metal"
+        # es. se "black_metal" e "metal" coesistono -> tieni solo "black_metal"
         # ad es. "indie_rock" e "rock" coesistono -> tieni "indie_rock"
         filtered_tags = []
         for tag in tags:
-            # se non è vero che "tag" è sottoinsieme di "other_tag"
-            # es. "tag in other_tag" => scartiamo tag
+            """
+            Verifica che nessun altro tag nella lista contiene il tag corrente come sottostringa diverso da sé stesso. 
+            Se nessun altro tag soddisfa questa condizione, allora il tag corrente viene aggiunto a filtered_tags.
+            """
+            # (lo so, sembra uno sciogli-lingua)
             if not any(tag in other_tag and tag != other_tag for other_tag in tags):
                 filtered_tags.append(tag)
 

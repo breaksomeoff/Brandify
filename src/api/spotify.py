@@ -76,6 +76,7 @@ def get_spotify_data(token, top_n_genres=15, top_m_artists=15):
         recent_genres.extend([clean_text(genre) for genre in artist_data.get('genres', [])])
         recent_artists.append(clean_text(artist_data['name']))
 
+    # Converte ciascuna lista in una Series, conta le occorrenze, seleziona i primi N/M elementi e ottiene l'indice come lista
     top_genres = pd.Series(top_genres).value_counts().head(top_n_genres).index.tolist()
     top_artists = pd.Series(top_artists).value_counts().head(top_m_artists).index.tolist()
     recent_genres = pd.Series(recent_genres).value_counts().head(top_n_genres).index.tolist()
