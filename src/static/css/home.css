@@ -64,3 +64,14 @@ p {
 .styled-button:active {
     transform: translateY(0);
 }
+
+.mock-data-link {
+    color: #888;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+
+}
+
+.mock-data-link:hover {
+    color: #ccc;
+}

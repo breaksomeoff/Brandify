@@ -27,7 +27,6 @@ def create_app():
     app.secret_key = config.FLASK_SECRET_KEY
 
     # Preprocessing del data contenente i prodotti
-    # (Se app.run(debug=*True*, port=5000) viene eseguito, il preprocessing viene effettuato due volte)
     print("[INFO] Caricamento e preprocessing data...")
     df_products = preprocess_products(config.DATASET_PATH)
     app.config["DF_PRODUCTS"] = df_products
@@ -50,7 +49,7 @@ def create_app():
     @app.route('/')
     def home():
         """Route principale dell'app."""
-        return render_template('home.html')
+        return render_template('home.html', use_mock_data=config.USE_MOCK_DATA)
 
     return app
 

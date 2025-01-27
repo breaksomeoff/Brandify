@@ -14,6 +14,11 @@
             <a href="/spotify/login" class="styled-button">
                 Log in with Spotify
             </a>
+            {% if use_mock_data %}
+            <a href="/recommendations/configure?mock=true" class="mock-data-link">
+                        or try it with mock data
+            </a>
+            {% endif %}
         </div>
     </body>
 </html>

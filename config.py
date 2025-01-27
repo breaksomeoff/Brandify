@@ -54,9 +54,9 @@ GA_STAGNATION_LIMIT = 35  # Numero di iterazioni senza miglioramenti per conside
 # Pesi per la funzione di fitness
 GA_AFFINITY_WEIGHTS = {
     "artists": 10,
-    "genres": 15 # Peso maggiore essendo più specifico (i prodotti di artisti saranno molto più numerosi rispetto ai prodotti di genere)
+    "genres": 10
 }
-GA_PENALTY_WEIGHT_NON_MATCH = 15  # Penalità per ogni prodotto non corrispondente ai gusti dell'utente (falsi positivi)
+GA_PENALTY_WEIGHT_NON_MATCH = 10  # Penalità per ogni prodotto non corrispondente ai gusti dell'utente (falsi positivi)
 GA_PENALTY_MISSING_RELEVANT = 15  # Penalità per ogni prodotto "rilevante" non incluso (falsi negativi)
 
 

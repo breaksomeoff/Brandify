@@ -6,9 +6,17 @@ recommendations_bp = Blueprint('recommendations', __name__)
 
 @recommendations_bp.route('/configure', methods=['GET'])
 def configure_search():
+    use_mock = request.args.get('mock', 'false').lower() == 'true'
+
+    if use_mock and config.USE_MOCK_DATA:
+        # Usa i dati mock senza controllare il token
+        return render_template('configure_search.html', authorization_token="mock-token")
+
+    # Controllo token normale
     token = session.get('authorization_token')
     if not token:
         return jsonify({"error": "Authorization token missing"}), 401
+
     return render_template('configure_search.html', authorization_token=token)
 
 @recommendations_bp.route('/', methods=['POST'])
